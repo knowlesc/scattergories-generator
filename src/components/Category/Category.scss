@@ -1,0 +1,27 @@
+.category {
+  display: flex;
+  border-bottom: 4px dotted #DDD;
+
+  .category-number {
+    font-size: 0.8em;
+    margin: auto 5px 2px 0;
+  }
+
+  .category-name {
+    font-weight: 600;
+  }
+}
+
+.categories.flipped .category-name {
+  background: none;
+  transition: all ease-in-out 0.2s;
+  user-select: none;
+}
+
+.categories.not-flipped .category-name  {
+  border-bottom: none;
+  background: linear-gradient(130deg, #000, #333);
+  color: transparent;
+  transition: all ease-in-out 0.2s;
+  user-select: none;
+}
