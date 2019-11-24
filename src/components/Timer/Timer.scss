@@ -3,15 +3,31 @@
   justify-content: center;
   align-items: center;
   flex-flow: column nowrap;
+  position: relative;
+  overflow: hidden;
 
   .timer-time {
     font-size: 80px;
     font-weight: bold;
   }
+
+  .timer-progress {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    width: 0%;
+    background: rgba(0, 0, 0, 0.15);
+    transition: width linear 1s;
+  }
 }
 
+
+
 @media (max-width: 600px), (max-height: 600px) {
-  .timer-time {
-    font-size: 60px;
+  .timer {
+    .timer-time {
+      font-size: 60px;
+    }
   }
 }

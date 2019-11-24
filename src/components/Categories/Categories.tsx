@@ -13,10 +13,14 @@ export const Categories: React.FC<ICategoriesProps> = ({ categories }) => {
   };
 
   return (
-    <section className="categories-wrapper">
-      <div className={ `categories ${flipped ? 'flipped' : 'not-flipped'}` }
+    <section className={ `categories-wrapper flip-container ${flipped ? 'flipped' : ''}` }>
+      <div className="flipper"
         onClick={clicked}>
-        { categories.map((cat, i) => <Category key={ i } categoryName={ cat } number={ i + 1 } />) }
+        <div className="categories front">
+        </div>
+        <div className="categories back">
+          { categories.map((cat, i) => <Category key={ i } categoryName={ cat } number={ i + 1 } />) }
+        </div>
       </div>
     </section>
   )

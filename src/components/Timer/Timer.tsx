@@ -9,10 +9,12 @@ export interface ITimerProps {
 
 export const Timer: React.FC<ITimerProps> = ({ maxTime }) => {
   const [time, setTime] = React.useState(maxTime);
+  const [progress, setProgress] = React.useState(0);
   const [started, setStarted] = React.useState(false);
 
   useInterval(() => {
     setTime((t) => t - 1);
+    setProgress(((maxTime - time) / maxTime) * 100);
     if (time === 1) {
       resetClicked();
       if (Audio) {
@@ -33,11 +35,13 @@ export const Timer: React.FC<ITimerProps> = ({ maxTime }) => {
   const resetClicked = () => {
     setStarted(false);
     setTime(maxTime);
+    setProgress(0);
   }
 
   return (
     <section className="timer-wrapper">
       <div className="timer">
+        <div className="timer-progress" style={ { width: `${progress}%` } }></div>
         <div className="timer-time">{ time }</div>
         <div className="actions">
           { !started && <IconButton icon="play" onClick={ playClicked } /> }
