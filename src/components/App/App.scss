@@ -45,9 +45,7 @@ body, html {
   box-sizing: border-box;
 }
 
-.categories-wrapper,
-.timer-wrapper,
-.alphabet-wrapper {
+section {
   position: absolute;
   padding: 2%;
 }
@@ -61,21 +59,29 @@ body, html {
 
 .timer-wrapper {
   width: 40%;
-  height: 50%;
+  height: 40%;
   right: 0;
   top: 0;
 }
 
 .alphabet-wrapper {
   width: 40%;
-  height: 50%;
+  height: 40%;
   right: 0;
   bottom: 0;
 }
 
+.controls-wrapper {
+  width: 40%;
+  height: 20%;
+  right: 0;
+  bottom: 40%;
+}
+
 .categories,
 .timer,
-.alphabet {
+.alphabet,
+.controls {
   width: 100%;
   height: 100%;
   padding: 4%;
@@ -84,7 +90,8 @@ body, html {
 }
 
 .timer,
-.alphabet {
+.alphabet,
+.controls {
   border-radius: 8px;
 }
 

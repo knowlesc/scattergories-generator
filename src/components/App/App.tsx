@@ -5,12 +5,16 @@ import { Categories } from '../Categories/Categories';
 import { Alphabet } from '../Alphabet/Alphabet';
 import { Settings } from '../Settings/Settings';
 import { Randomizer } from '../../services/Ranzomizer';
+import { Controls } from '../Controls/Controls';
+import { useInterval } from '../../hooks';
 
 export const App: React.FC = () => {
   const [categories, setCategories] = React.useState(Randomizer.getRandomCategories(12));
   const [letter, setLetter] = React.useState(Randomizer.getRandomLetter());
+  const [time, setTime] = React.useState(120);
   const [maxTime, setMaxTime] = React.useState(120);
   const [categoryCount, setCategoryCount] = React.useState(12);
+  const [gameState, setGameState] = React.useState<'running' | 'paused' | 'ready'>('ready');
 
   const randomizeGame = () => {
     setCategories(Randomizer.getRandomCategories(categoryCount));
@@ -22,15 +26,42 @@ export const App: React.FC = () => {
     setCategoryCount(categoryCount);
   }
 
-  React.useEffect(() => {
+  const startGame = () => {
+    setGameState('running');
+  }
+
+  const pauseGame = () => {
+    setGameState('paused');
+  }
+
+  const stopGame = () => {
+    setTime(maxTime);
     randomizeGame();
+    setGameState('ready');
+  }
+
+  React.useEffect(() => {
+    stopGame();
   }, [maxTime, categoryCount])
+
+  useInterval(() => {
+    setTime((t) => t - 1);
+    if (time === 1) {
+      stopGame();
+      if (Audio) {
+        const audio = new Audio('build/alarm.mp3');
+        audio.play();
+      }
+    }
+  }, gameState === 'running' ? 1000 : null);
 
   return (
     <div className="app">
-      <Timer maxTime={ maxTime } />
-      <Categories categories={ categories } />
-      <Alphabet letter={ letter } randomize={ randomizeGame } />
+      <Timer time={ time } maxTime={ maxTime } />
+      <Categories categories={ categories }
+        flipped={ gameState === 'running' } />
+      <Alphabet letter={ letter } />
+      <Controls { ...{ randomizeGame, startGame, stopGame, pauseGame, gameState } } />
       <Settings defaultMaxTime={ maxTime }
         defaultCategoryCount={ categoryCount }
         onChange={ settingsUpdated } />

@@ -1,18 +1,11 @@
+$base-font-size: 10px;
+
 .categories {
   border-radius: 4px 8px;
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-around;
-}
-
-$base-font-size: 10px;
-
-.categories {
   font-size: $base-font-size;
-}
-
-.categories-wrapper.flipped .flipper {
-  transform: rotateY(180deg);
 }
 
 .flipper {
@@ -33,6 +26,10 @@ $base-font-size: 10px;
   }
 
   .back {
+    transform: rotateY(180deg);
+  }
+
+  &.flipped {
     transform: rotateY(180deg);
   }
 }
