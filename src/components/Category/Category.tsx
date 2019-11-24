@@ -8,6 +8,6 @@ interface ICategoryProps {
 
 export const Category: React.FC<ICategoryProps> = ({ categoryName, number }) => (
   <div className="category">
-    <span className="category-number">{ number }.</span> <span className="category-name">{ categoryName }</span>
+    <span className="category-number">{ number }</span> <span className="category-name">{ categoryName }</span>
   </div>
 );
