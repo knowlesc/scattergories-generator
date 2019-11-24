@@ -4,7 +4,7 @@ import { Timer } from '../Timer/Timer';
 import { Categories } from '../Categories/Categories';
 import { Alphabet } from '../Alphabet/Alphabet';
 import { Settings } from '../Settings/Settings';
-import { Randomizer } from '../../services/Ranzomizer';
+import { Randomizer } from '../../services/Randomizer';
 import { Controls } from '../Controls/Controls';
 import { useInterval } from '../../hooks';
 
@@ -57,7 +57,7 @@ export const App: React.FC = () => {
 
   return (
     <div className="app">
-      <Timer time={ time } maxTime={ maxTime } />
+      <Timer time={ time } progress={ 100 * ((maxTime - time) / maxTime) } />
       <Categories categories={ categories }
         flipped={ gameState === 'running' } />
       <Alphabet letter={ letter } />

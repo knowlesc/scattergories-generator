@@ -20,6 +20,16 @@
     background: rgba(0, 0, 0, 0.15);
     transition: width linear 1s;
   }
+
+  &.ending {
+    .timer-time {
+      color: red;
+    }
+
+    .timer-progress {
+      background: rgba(255, 0, 0, 0.15);
+    }
+  }
 }
 
 @media (max-width: 600px), (max-height: 600px) {

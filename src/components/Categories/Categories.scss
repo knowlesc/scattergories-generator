@@ -23,6 +23,8 @@ $base-font-size: 10px;
   .front {
     z-index: 2;
     transform: rotateY(0deg);
+    text-align: center;
+    font-size: 48px;
   }
 
   .back {

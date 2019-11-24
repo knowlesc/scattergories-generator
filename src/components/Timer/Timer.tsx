@@ -3,14 +3,14 @@ import * as React from 'react';
 
 export interface ITimerProps {
   time: number;
-  maxTime: number;
+  progress: number;
 }
 
-export const Timer: React.FC<ITimerProps> = ({ time, maxTime }) => (
+export const Timer: React.FC<ITimerProps> = ({ time, progress }) => (
   <section className="timer-wrapper">
-    <div className="timer">
+    <div className={ `timer ${ time <= 10 ? 'ending' : '' }` }>
       <div className="timer-progress"
-        style={ { width: `${((maxTime - time) / maxTime) * 100}%` } }></div>
+        style={ { width: `${progress}%`} }></div>
       <div className="timer-time">{ time }</div>
     </div>
   </section>
