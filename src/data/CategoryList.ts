@@ -128,7 +128,7 @@ export const CategoryList = [
   'Seafood',
   'Software',
   'Something you keep hidden',
-  'Something you’re afraid oF',
+  'Something you’re afraid of',
   'Song titles',
   'Spices/Herbs',
   'Spicy foods',
