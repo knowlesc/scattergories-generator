@@ -9,8 +9,8 @@ import { Controls } from '../Controls/Controls';
 import { useInterval } from '../../hooks';
 
 export const App: React.FC = () => {
-  const [categories, setCategories] = React.useState(Randomizer.getRandomCategories(12));
-  const [letter, setLetter] = React.useState(Randomizer.getRandomLetter());
+  const [categories, setCategories] = React.useState<string[]>([]);
+  const [letter, setLetter] = React.useState('');
   const [time, setTime] = React.useState(120);
   const [maxTime, setMaxTime] = React.useState(120);
   const [categoryCount, setCategoryCount] = React.useState(12);

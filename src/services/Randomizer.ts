@@ -22,7 +22,9 @@ export class Randomizer {
   private static unseenLetters = Letters;
   static getRandomLetter() {
     if (this.unseenLetters.length === 0) this.unseenLetters = Letters;
-    return this.unseenLetters[this.random(this.unseenLetters.length)];
+    const nextLetter = this.unseenLetters[this.random(this.unseenLetters.length)];
+    this.unseenLetters = this.unseenLetters.replace(nextLetter, '');
+    return nextLetter;
   }
 
   private static random(max: number) {
